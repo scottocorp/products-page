@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { ProductItemProps } from '@/lib/types'
 
-export default function ProductItem() {
+export default function ProductItem(props: ProductItemProps) {
 
   return (
     <div 
@@ -12,12 +13,14 @@ export default function ProductItem() {
           height={750}
           className="p-8 rounded-t-lg" 
           src="/product-placeholder.jpg" 
-          alt="product image" />
+          alt={`${props.product.productName} product image`} />
       </a>
 
       <div className="px-5 pb-5">
         <a href="#">
-          <h5 className="text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">Grey Goose Orginal 10x12x50ml</h5>
+          <h5 className="text-xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
+            {props.product.productName}
+          </h5>
         </a>
       </div>
 
