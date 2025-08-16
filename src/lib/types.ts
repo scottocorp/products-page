@@ -8,13 +8,13 @@ export interface Product {
   isSale: boolean
   productImage: string
   productName: string
-  type: Filter
+  type: ProductType
 }
 
-export enum Filter {
-  ALL,
-  BEER,
-  WINE,
-  SPIRITS,
-  CIDER,
+export enum ProductType {
+  ALL = 'All',
+  BEER = 'Beer',
+  WINE = 'Wine',
+  SPIRITS = 'Spirits',
+  CIDER = 'Cider',
 }
