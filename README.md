@@ -12,7 +12,7 @@ Then:
 
 ```
 git clone git@github.com:scottocorp/products-page.git
-cd producs-page
+cd products-page
 npm install
 npm run dev
 ```
@@ -27,6 +27,7 @@ npm run test
 
 This is definitely a "minimum viable product". More work is needed to:
 - Add the ability to page the results from the server.
+- Replace the placeholder image with real images.
 - Fix some TypeScript warnings.
 
 ## License
