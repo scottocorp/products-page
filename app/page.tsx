@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import Header from '@/ui/header'
 import ProductListWithSuspense from '@/ui/productList'
-import { fetchProducts } from '@/lib'
+import { fetchProducts, decodedSearch } from '@/lib'
 import { Product, ProductType } from '@/lib/types'
 import { ProductListSkeleton } from '@/ui/skeletons'
 
@@ -14,7 +14,7 @@ export default async function Home({
   const params = (await searchParams)
 
   let products: Product[] | undefined
-  products = await fetchProducts(params.filter as any)
+  products = await fetchProducts(params.filter as any, decodedSearch(params.search))
 
   // if browser is requesting html it means it's the first page load
   // const headersList = await headers()

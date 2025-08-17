@@ -2,26 +2,30 @@ import products from '@/data/products.json'
 import { ProductType } from '@/lib/types'
 
 
-const applyFilter = (products: any, productType: ProductType) => {
+const applyFilter = (products: any, productType: ProductType, searchString: any) => {
 
   {/* @ts-ignore */}
   const ProductTypeString = ProductType[productType]
 
   if (ProductTypeString === ProductType.ALL || !productType) {
-    return products
+    return products.filter((product: any) => 
+      product.productName.toLowerCase().includes(searchString.toLowerCase()))
   }
-  return products.filter((product: any) => product.type === ProductTypeString)
+  return products.filter((product: any) => 
+    product.type === ProductTypeString && 
+    product.productName.toLowerCase().includes(searchString.toLowerCase())
+  )
 }
 
 
-export const fetchProducts = async (productType: ProductType) => {
+export const fetchProducts = async (productType: ProductType, searchString: any) => {
 
   // Here we can decide whether to fetch data locally, eg: from json, or remotely, from an API, say:
 
   if (process.env.NEXT_PUBLIC_WORKSPACE && process.env.NEXT_PUBLIC_WORKSPACE === 'production') {
-    return applyFilter(fetchRemoteProducts(), productType)
+    return applyFilter(fetchRemoteProducts(), productType, searchString)
   }
-  return applyFilter(fetchLocalProducts(), productType)
+  return applyFilter(fetchLocalProducts(), productType, searchString)
 }
 
 
@@ -50,4 +54,10 @@ const fetchRemoteProducts = async () => {
       console.log(e.message);
     }  
   }
+}
+
+export const decodedSearch = (encodedSearch: any) => {
+
+  const decodedSearch = decodeURIComponent(encodedSearch)
+  return decodedSearch === 'null' || decodedSearch === 'undefined' ? '' : decodedSearch
 }
