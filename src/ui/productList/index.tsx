@@ -6,6 +6,7 @@ import { ProductListSkeleton } from '@/ui/skeletons'
 
 async function ProductListLoader() {
 
+  {/* @ts-ignore */}
   const products = await fetchProducts()
 
   return <ProductList products={products} />

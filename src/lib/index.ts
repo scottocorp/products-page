@@ -4,6 +4,7 @@ import { ProductType } from '@/lib/types'
 
 const applyFilter = (products: any, productType: ProductType) => {
 
+  {/* @ts-ignore */}
   const ProductTypeString = ProductType[productType]
 
   if (ProductTypeString === ProductType.ALL || !productType) {

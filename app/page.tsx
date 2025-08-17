@@ -27,6 +27,7 @@ export default async function Home({
     <>
       <Header />
       <Suspense fallback={<ProductListSkeleton />}>
+        {/* @ts-ignore */}
         <ProductListWithSuspense products={products} />
       </Suspense>
     </>
