@@ -6,13 +6,14 @@ Products Page is a simple responsive web application, based on [Next.js](https:/
 
 You'll need to install [node.js](https://nodejs.org/en/). I used version `22.14.0` but you can install [nvm](https://github.com/nvm-sh/nvm) to easily switch between node.js versions.
 
-Copy `.env.example` to `.env` and enter the appropriate vales. The defaults should work.
-
 Then:
 
 ```
 git clone git@github.com:scottocorp/products-page.git
 cd products-page
+```
+Copy `.env.example` to `.env` and enter the appropriate vales. The defaults should work.
+```
 npm install
 npm run dev
 ```
